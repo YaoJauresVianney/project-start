@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Services\Contracts\AuthenticationContract;
 use Illuminate\Support\Facades\Hash;
 
+
 class AuthenticationService implements AuthenticationContract
 {
     public function register(array $data):User
@@ -18,10 +19,13 @@ class AuthenticationService implements AuthenticationContract
         if(is_null($user) || !Hash::check($credentials['password'], $user->password)) {
             throw new \Exception('Invalid credentials');
         }
-        $token = $user->createToken('auth::token')->plainTextToken();
+        $token = $user->createToken('auth::token')->plainTextToken;
         return compact('user', 'token'); 
     }
-    public function logout(){}
+    public function logout(User $user, string $token):bool
+    {
+        return $user->tokens()->where('token', $token)->delete();
+    }
     public function refresh(){}
     public function user(){}
     public function delete(){}

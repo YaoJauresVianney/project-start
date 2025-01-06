@@ -25,9 +25,9 @@ function () {
     Route::get('register', [AuthenticationController::class, 'register_page'])->name('register_page');
     Route::get('login', [AuthenticationController::class, 'login_page'])->name('login_page');
     Route::post('register', [AuthenticationController::class, 'register'])->name('register');
-    Route::post('login', [AuthenticationContract::class, 'login'])->name('login');
+    Route::post('login', [AuthenticationController::class, 'login'])->name('login');
     Route::post('refresh', [AuthenticationContract::class, 'refresh'])->name('refresh');
     Route::post('logout', [AuthenticationContract::class, 'logout'])->name('logout')->middleware('auth:sanctum');
-    Route::post('user', [AuthenticationContract::class, 'me'])->name('me')->middleware('auth:sanctum');
+    Route::post('user', [AuthenticationContract::class, 'user'])->name('user')->middleware('auth:sanctum');
 }
 );

@@ -8,7 +8,7 @@ interface AuthenticationContract extends ServiceContract
 {
     public function register(array $data):User;
     public function login(array $credentials):array;
-    public function logout();
+    public function logout(User $user, string $token):bool;
     public function refresh();
     public function user();
     public function delete();
