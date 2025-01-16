@@ -12,6 +12,7 @@ use Illuminate\Http\Response;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\EmailVerificationRequest;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Password;
 
 class AuthenticationController extends Controller
 {
@@ -71,5 +72,30 @@ class AuthenticationController extends Controller
         auth()->user()->sendEmailVerificationNotification();
 
         return response()->json(['message' => 'Email verification link sent on your email id'], Response::HTTP_OK);
+    }
+
+    public function forgotPassword(Request $request): JsonResponse
+    {
+        $request->validate(['email' => 'required|email']);
+
+        $status = Password::sendResetLink($request->only('email'));
+
+        return response()->json(['message' => __($status)], Response::HTTP_OK);
+    }
+
+    public function updatePassword(Request $request): JsonResponse
+    {
+        $request->validate([
+            'token' => 'required',
+            'email' => 'required|email',
+            'password' => 'required|confirmed|min:8',
+        ]);
+
+        $status = Password::reset(
+            $request->only('email', 'password', 'password_confirmation', 'token'),
+            fn($user) => $user->update(['password' => $request->password])
+        );
+
+        return response()->json(['message' => __($status)], Response::HTTP_OK);
     }
 }

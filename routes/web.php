@@ -18,3 +18,4 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
+Route::view('app', 'app')->name('app');

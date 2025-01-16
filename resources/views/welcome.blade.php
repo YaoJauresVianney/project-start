@@ -1,9 +1,7 @@
 @extends('layouts.default')
 
-@section('title')
-    Accueil    
-@endsection
-
 @section('content')
-    Accueil
+    <div>
+        <h1>Welcome</h1>
+    </div>
 @endsection
