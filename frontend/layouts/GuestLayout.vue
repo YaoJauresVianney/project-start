@@ -1,6 +1,10 @@
+<script setup></script>
 <template>
-    <main>
-        <h1>Guest</h1>
-        <slot /> 
-    </main>
+    <v-app>
+        <v-main class="container">
+            <slot />
+        </v-main>
+    </v-app>
 </template>
+
+<style scoped></style>

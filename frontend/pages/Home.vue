@@ -5,7 +5,7 @@
 </script>
 <template>
     <div>
-        <h1>
+        <h1 class="bg-pink-200">
             <v-icon aria-hidden="false">
                 mdi-account
             </v-icon>

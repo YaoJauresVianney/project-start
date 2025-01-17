@@ -5,6 +5,7 @@ import pinia from "./plugins/pinia";
 import vuetify from "./plugins/vuetify";
 import GuestLayout from "./layouts/GuestLayout.vue";
 import AuthLayout from "./layouts/AuthLayout.vue";
+import "./src/app.css";
 
 const app = createApp(App);
 

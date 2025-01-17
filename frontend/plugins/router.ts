@@ -8,8 +8,13 @@ const router = createRouter({
             name: 'home',
             component: () => import('../pages/Home.vue'),
             meta: {
-                layout: 'guest-layout'
+                layout: 'auth-layout'
             }
+        },
+        {
+            path: '/a',
+            name: 'about',
+            component: () => import('../pages/Home.vue'),
         }
     ]
 })
