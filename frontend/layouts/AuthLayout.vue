@@ -1,5 +1,5 @@
 <template>
-    <v-app id="inspire">
+    <v-app id="inspire" class="bg-gray-100">
     <v-navigation-drawer
     model-value
       class="pt-4"

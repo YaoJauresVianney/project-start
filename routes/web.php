@@ -18,4 +18,6 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
-Route::view('app', 'app')->name('app');
+Route::view('app/{any}', 'app')
+    ->where('any', '.*')
+    ->name('app');

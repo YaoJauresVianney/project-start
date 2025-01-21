@@ -27,8 +27,8 @@ Route::group([
     'as' => 'auth.'
 ],
 function () {
-    Route::get('register', [AuthenticationController::class, 'register_page'])->name('register_page');
-    Route::get('login', [AuthenticationController::class, 'login_page'])->name('login_page');
+    //Route::get('register', [AuthenticationController::class, 'register_page'])->name('register_page');
+    //Route::get('login', [AuthenticationController::class, 'login_page'])->name('login_page');
     Route::post('register', [AuthenticationController::class, 'register'])->name('register');
     Route::post('login', [AuthenticationController::class, 'login'])->name('login');
     Route::post('refresh', [AuthenticationController::class, 'refresh'])->name('refresh');

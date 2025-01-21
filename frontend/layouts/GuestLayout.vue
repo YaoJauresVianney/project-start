@@ -1,6 +1,6 @@
 <script setup></script>
 <template>
-    <v-app>
+    <v-app class="bg-gray-100">
         <v-main class="container">
             <slot />
         </v-main>

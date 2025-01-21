@@ -12,9 +12,12 @@ const router = createRouter({
             }
         },
         {
-            path: '/a',
-            name: 'about',
-            component: () => import('../pages/Home.vue'),
+            path: '/sign-up',
+            name: 'auth.sign-up',
+            component: () => import('../pages/Auth/SignUp.vue'),
+            meta: {
+                layout: 'guest-layout'
+            }
         }
     ]
 })
