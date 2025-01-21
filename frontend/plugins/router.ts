@@ -18,6 +18,14 @@ const router = createRouter({
             meta: {
                 layout: 'guest-layout'
             }
+        },
+        {
+            path: '/sign-in',
+            name: 'auth.sign-in',
+            component: () => import('../pages/Auth/SignIn.vue'),
+            meta: {
+                layout: 'guest-layout'
+            }
         }
     ]
 })

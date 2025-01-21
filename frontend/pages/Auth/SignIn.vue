@@ -3,17 +3,15 @@ import { reactive, ref } from 'vue';
 import { $post } from '../../composables/useApi.ts';
 
     const form = reactive({
-        name: '',
         email: '',
         password: '',
-        password_confirmation: '',
     });
 
     const submitting = ref(false);
 
-    const signUp = () => {
+    const signIn = () => {
         submitting.value = true;
-        $post('register', form)
+        $post('login', form)
             .then((response) => {
                 console.log(response);
             })
@@ -34,18 +32,7 @@ import { $post } from '../../composables/useApi.ts';
         <v-sheet width="600" class="p-4 space-y-7" rounded="lg" >
             <h1 class="text-center">Sign Up</h1>
             <v-divider></v-divider>
-            <v-row>
-                <v-col cols="12">
-                    <v-text-field
-                        v-model="form.name"
-                        label="Name"
-                        outlined
-                        dense
-                        required
-                        :disabled="submitting"
-                    ></v-text-field>
-                </v-col>
-            </v-row>
+            
             <v-row>
                 <v-col cols="12">
                     <v-text-field
@@ -71,27 +58,15 @@ import { $post } from '../../composables/useApi.ts';
                     ></v-text-field>
                 </v-col>
             </v-row>
-            <v-row>
-                <v-col cols="12">
-                    <v-text-field
-                        v-model="form.password_confirmation"
-                        label="Confirm Password"
-                        type="password"
-                        outlined
-                        dense
-                        required
-                        :disabled="submitting"
-                    ></v-text-field>
-                </v-col>
-            </v-row>
+            
             <v-row>
                 <v-col cols="12">
                     <v-btn
                         color="primary"
                         block
-                        @click="signUp"
+                        @click="signIn"
                     >
-                        Sign Up
+                        Sign In
                     </v-btn>
                 </v-col>
             </v-row>
