@@ -1,6 +1,6 @@
 <script setup>
 import { reactive } from 'vue';
-import {$post} from '../../composables/useApi';
+import { $post } from '../../composables/useApi.ts';
 
     const form = reactive({
         name: '',
@@ -9,11 +9,16 @@ import {$post} from '../../composables/useApi';
         password_confirmation: '',
     });
 
-    const register = () => {
-        $post('register', form).then((data) => {
-            console.log(data);
-        });
-    }
+    const signUp = () => {
+        $post('register', form)
+            .then((response) => {
+                console.log(response);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    };
+    
 </script>
 
 <template>
@@ -72,9 +77,9 @@ import {$post} from '../../composables/useApi';
             <v-row>
                 <v-col cols="12">
                     <v-btn
-                        @click="register"
                         color="primary"
                         block
+                        @click="signUp"
                     >
                         Sign Up
                     </v-btn>

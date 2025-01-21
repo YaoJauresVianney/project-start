@@ -8,15 +8,20 @@ const instance = axios.create({
 instance.interceptors.request.use((config) => {
     const token = localStorage.getItem('token');
     if (token) {
-        config.headers.Authorization = `Bearer ${token}`;
+        config.headers["Authorization"] = `Bearer ${token}`;
     }
     return config;
 });
 
-const $get = <T>(uri: string, params?: any) => instance.get(uri, { params }).then(({data}) => data);
-const $post = <T>(uri: string, data?: any) => instance.post(uri, data).then(({data}) => data);
+const $get = (uri: string, params?: any) => instance.get(uri, { params }).then(({data}) => data);
+const $post = (uri: string, data?: any) => instance.post(uri, data).then(({data}) => data);
 
-const $put = <T>(uri: string, data?: any) => instance.put(uri, data).then(({data}) => data);
-const $delete = <T>(uri: string, data?: any) => instance.delete(uri).then(({data}) => data);
+const $put = (uri: string, data?: any) => instance.put(uri, data).then(({data}) => data);
+const $delete = (uri: string, data?: any) => instance.delete(uri, data).then(({data}) => data);
 
-export default $post;
+export {
+    $get,
+    $post,
+    $put,
+    $delete
+}
